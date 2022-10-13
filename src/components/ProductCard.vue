@@ -5,6 +5,7 @@ defineProps({
   image_url: {type: String, required: true},
   price: {type: Number, required: true},
   id: {type: Number, required: true},
+  noRemove: {type: Boolean, default: false}
 })
 
 </script>
@@ -19,7 +20,7 @@ defineProps({
   <div class="product-card__price">
     {{ price.toLocaleString() }} руб.
   </div>
-  <button class="product-card__delete" @click="$emit('delete', id)">
+  <button class="product-card__delete" @click="$emit('delete', id)" v-if="!noRemove">
     <img src="public/images/icons/delete.svg">
   </button>
 </div>

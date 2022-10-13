@@ -22,6 +22,37 @@
       background: darken($success, 5);
     }
   }
+  &.button_secondary {
+    border: 0 !important;
+    --n-border: none !important;
+    box-shadow: $shadow;
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray-200 !important;
+
+    .n-base-wave, .n-border, .n-button__state-border {
+      display: none !important;
+    }
+
+    .n-icon {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+    }
+
+    &:hover {
+      background: $gray-50;
+      --n-border: none !important;
+    }
+    &:focus {
+      --n-border: none !important;
+    }
+  }
 
   &:disabled {
     background: $gray-50;
