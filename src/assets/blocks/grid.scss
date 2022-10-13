@@ -1,0 +1,13 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  @for $i from 1 through 8 {
+    &.grid_gap-x-#{$i} {
+      grid-row-gap: #{$i * 0.25}rem;
+    }
+    &.grid_gap-y-#{$i} {
+      grid-column-gap: #{$i * 0.25}rem;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.card {
+  padding: 24px;
+  border-radius: 4px;
+  box-shadow: $shadow-big;
+  overflow: hidden;
+
+  &.card_no-padding {
+    padding: 0;
+  }
+}
