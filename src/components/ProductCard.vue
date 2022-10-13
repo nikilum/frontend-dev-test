@@ -51,6 +51,7 @@ defineProps({
     padding: 0 24px;
   }
   &__name {
+    word-break: break-word;
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
