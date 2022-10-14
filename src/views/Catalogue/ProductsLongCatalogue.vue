@@ -1,33 +1,14 @@
 <script setup>
-import FilterDropdown from '../components/FilterDropdown.vue'
-import {computed, ref} from "vue";
-import ProductCard from "../components/ProductCard.vue";
+import FilterDropdown from '@/components/FilterDropdown.vue'
+import ProductCard from "@/components/ProductCard.vue";
+import {dropdownParams, filter, useFilteredCards} from "./defaultFields";
+import {ref} from "vue";
 
-const filter = ref("")
-
-const dropdownParams = [
-  {label: 'По умолчанию', key: 'default'},
-  {label: 'Мин. цена', key: 'min'},
-  {label: 'Макс. цена', key: 'max'},
-]
+let productsLoadingTimeout = null
 
 const cards = ref([])
 
-const filteredCards = computed(() => {
-  const cardsCopy = JSON.parse(JSON.stringify(cards.value))
-
-  switch (filter.value) {
-    case "min":
-      return cardsCopy.sort((a, b) => Number(a.price) > Number(b.price) ? 1 : -1)
-    case "max":
-      return cardsCopy.sort((a, b) => Number(a.price) < Number(b.price) ? 1 : -1)
-    case "default":
-    default:
-      return cardsCopy
-  }
-})
-
-let productsLoadingTimeout = null
+const filteredCards = useFilteredCards(cards)
 
 async function loadProducts() {
   if (productsLoadingTimeout) {
@@ -49,7 +30,6 @@ async function loadProducts() {
     cards.value = [...cards.value, ...mappedResponse]
   } catch (e) {
     alert("Неизвестная ошибка получения данных!")
-    console.log(e)
   }
 }
 

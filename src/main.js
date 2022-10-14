@@ -10,7 +10,7 @@ app.directive('scroll', (el, binding) => {
     document.addEventListener('scroll', function () {
         console.log(window.scrollY, el.clientHeight)
 
-        if (window.scrollY + 500 >= el.scrollHeight) {
+        if (window.scrollY + window.innerHeight >= el.scrollHeight) {
             binding.value()
         }
     })
